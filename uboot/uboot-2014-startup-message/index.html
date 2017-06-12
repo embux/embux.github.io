@@ -1,0 +1,824 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="uboot,startup,trace,i.mx6,taurus," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="uboot 2014 source refer: NXP (Freescale) Public Git IntrouctionU-Boot, the Universal Boot Loader is an open source, boot loader used in embedded devices. It is available for many computer architecture">
+<meta name="keywords" content="uboot,startup,trace,i.mx6,taurus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Uboot 2014 Startup Message">
+<meta property="og:url" content="http://embux.github.io/uboot/uboot-2014-startup-message/index.html">
+<meta property="og:site_name" content="EMBUX">
+<meta property="og:description" content="uboot 2014 source refer: NXP (Freescale) Public Git IntrouctionU-Boot, the Universal Boot Loader is an open source, boot loader used in embedded devices. It is available for many computer architecture">
+<meta property="og:updated_time" content="2017-05-18T07:22:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Uboot 2014 Startup Message">
+<meta name="twitter:description" content="uboot 2014 source refer: NXP (Freescale) Public Git IntrouctionU-Boot, the Universal Boot Loader is an open source, boot loader used in embedded devices. It is available for many computer architecture">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://embux.github.io/uboot/uboot-2014-startup-message/"/>
+
+  <title> Uboot 2014 Startup Message | EMBUX </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">EMBUX</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">embedded linux</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-products">
+          <a href="/product/embux-products/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
+            
+            Products
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-events">
+          <a href="/categories/events/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
+            
+            Events
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Uboot 2014 Startup Message
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-01-07T11:29:10+08:00" content="2016-01-07">
+              2016-01-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/uboot/" itemprop="url" rel="index">
+                    <span itemprop="name">uboot</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/uboot/uboot-2014-startup-message/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="uboot/uboot-2014-startup-message/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>uboot 2014 source refer: <a href="http://git.freescale.com/git/" target="_blank" rel="external">NXP (Freescale) Public Git</a></p>
+<h2 id="Introuction"><a href="#Introuction" class="headerlink" title="Introuction"></a>Introuction</h2><p>U-Boot, the Universal Boot Loader is an open source, boot loader used in embedded devices. It is available for many computer architectures (68k, ARM, AVR32, Blackfin, MicroBlaze, MIPS, Nios, SuperH, PPC and x86).</p>
+<h2 id="Boot-Console-Message"><a href="#Boot-Console-Message" class="headerlink" title="Boot Console Message"></a>Boot Console Message</h2><p>There are many ways to know the uboot architecture better.
+We will start from the debug message since it is easiler to trace from the source code.</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">U-Boot 2014.04-00008-g2f63f77 (Jul 26 2015 - 17:08:56)</div><div class="line"></div><div class="line">CPU:   Freescale i.MX6DL rev1.2 at 792 MHz</div><div class="line">CPU:   Temperature 30 C, calibration data: 0x5a95205f</div><div class="line">Reset cause: POR</div><div class="line">Board: ebx-taurus</div><div class="line">I2C:   ready</div><div class="line">DRAM:  1 GiB</div><div class="line">MMC:   FSL_SDHC: 0, FSL_SDHC: 1</div><div class="line">*** <span class="builtin-name">Warning</span> - bad CRC, using<span class="built_in"> default </span>environment</div><div class="line"></div><div class="line"><span class="literal">No</span> panel detected:<span class="built_in"> default </span><span class="keyword">to</span> Hannstar-XGA</div><div class="line">Display: Hannstar-XGA (1024x768)</div><div class="line"><span class="keyword">In</span>:    serial</div><div class="line">Out:   serial</div><div class="line">Err:   serial</div><div class="line">Found PFUZE100 <span class="attribute">deviceid</span>=10,revid=21</div><div class="line">detect <span class="keyword">and</span> <span class="builtin-name">set</span> boot device<span class="built_in">..</span></div><div class="line">JEDEC ID: 0xef:0x40:0x17</div><div class="line">check_and_clean: reg 0, flag_set 0</div><div class="line">Fastboot: Normal</div><div class="line">flash target is MMC:0</div><div class="line">Net:   FEC [PRIME]</div><div class="line">Normal Boot</div><div class="line">Hit any key <span class="keyword">to</span> stop autoboot:  0</div><div class="line">EMBUX-TAURUS &gt;</div></pre></td></tr></table></figure>
+<h3 id="I-Message-trace"><a href="#I-Message-trace" class="headerlink" title="I. Message trace"></a>I. Message trace</h3><h4 id="1-“U-Boot-2014-04-00008-g2f63f77-Jul-26-2015-17-08-56-”"><a href="#1-“U-Boot-2014-04-00008-g2f63f77-Jul-26-2015-17-08-56-”" class="headerlink" title="1. “U-Boot 2014.04-00008-g2f63f77 (Jul 26 2015 - 17:08:56)”"></a>1. “U-Boot 2014.04-00008-g2f63f77 (Jul 26 2015 - 17:08:56)”</h4><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">File</span>: ~/common/board_f.c</div><div class="line"></div><div class="line"><span class="prolog">static init_fnc_t init_sequence_f[] = &#123;</span></div><div class="line">...</div><div class="line">display_options,		</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">File</span>: ~/lib/display_options.c</div><div class="line"><span class="attribute">Function</span>: display_options()  </div><div class="line"></div><div class="line"><span class="http"><span class="attribute">File</span>: ~/common/cmd_version.c</span></div><div class="line"><span class="attribute">Function</span>: char __weak version_string[] = U_BOOT_VERSION_STRING;</div><div class="line"></div><div class="line"><span class="stata"><span class="keyword">File</span>: ~/<span class="keyword">include</span>/<span class="keyword">version</span>.<span class="built_in">h</span></span></div><div class="line">Function: U_BOOT_VERSION_STRING U_BOOT_VERSION <span class="string">" ("</span> U_BOOT_DATE <span class="string">" - "</span> U_BOOT_TIME <span class="string">")"</span> CONFIG_IDENT_STRING</div></pre></td></tr></table></figure>
+<h4 id="2-“CPU-Freescale-…”"><a href="#2-“CPU-Freescale-…”" class="headerlink" title="2. “CPU: Freescale …”"></a>2. “CPU: Freescale …”</h4><p> Freescale i.MX6DL rev1.2 at 792 MHz”<br> CPU:   Temperature 30 C, calibration data: 0x5a95205f”<br> Reset cause: POR  </p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">File</span>: ~/common/board_f.c</div><div class="line"></div><div class="line"><span class="prolog">static init_fnc_t init_sequence_f[] = &#123;</span></div><div class="line">...</div><div class="line">print_cpuinfo,		<span class="comment">/* display cpu info (and speed) */</span></div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">File:</span> ~<span class="meta-keyword">/arch/</span>arm<span class="meta-keyword">/imx-common/</span>cpu.c</div><div class="line"><span class="symbol">Function:</span> print_cpuinfo()  </div><div class="line"><span class="symbol"></span></div><div class="line">File: ~<span class="meta-keyword">/arch/</span>arm<span class="meta-keyword">/cpu/</span>armv7<span class="meta-keyword">/mx6/</span>soc.c</div><div class="line"><span class="symbol">Function:</span> check_cpu_temperature()</div></pre></td></tr></table></figure>
+<h4 id="3-Board-ebx-taurus”"><a href="#3-Board-ebx-taurus”" class="headerlink" title="3. Board: ebx-taurus”"></a>3. Board: ebx-taurus”</h4><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">File</span>: ~/common/board_f.c</div><div class="line"></div><div class="line"><span class="prolog">static init_fnc_t init_sequence_f[] = &#123;</span></div><div class="line">...</div><div class="line">checkboard,</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">File:</span> <span class="regexp">~/board/</span>freescale<span class="regexp">/ebx_taurus/</span>ebx_taurus.c</div><div class="line"><span class="string">Function:</span> checkboard()</div></pre></td></tr></table></figure>
+<h4 id="4-“I2C-ready”"><a href="#4-“I2C-ready”" class="headerlink" title="4. “I2C:   ready”"></a>4. “I2C:   ready”</h4><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">File</span>: ~/common/board_f.c</div><div class="line"></div><div class="line"><span class="prolog">static init_fnc_t init_sequence_f[] = &#123;</span></div><div class="line">...</div><div class="line">init_func_i2c,</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">File</span>: ~/<span class="keyword">common</span>/board_f.c</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: init_func_i2c()</div></pre></td></tr></table></figure>
+<h4 id="5-“DRAM-1-GiB”"><a href="#5-“DRAM-1-GiB”" class="headerlink" title="5. “DRAM:  1 GiB”"></a>5. “DRAM:  1 GiB”</h4><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">File</span>: ~/common/board_f.c</div><div class="line"></div><div class="line"><span class="prolog">static init_fnc_t init_sequence_f[] = &#123;</span></div><div class="line">...</div><div class="line">announce_dram_init,</div><div class="line">init_func_ram,</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">File</span>: ~/<span class="keyword">common</span>/board_f.c</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: announce_dram_init()</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: init_func_ram() -&gt; initdram()</div></pre></td></tr></table></figure>
+<h4 id="6-“MMC-FSL-SDHC-0-FSL-SDHC-1”"><a href="#6-“MMC-FSL-SDHC-0-FSL-SDHC-1”" class="headerlink" title="6. “MMC:   FSL_SDHC: 0, FSL_SDHC: 1”"></a>6. “MMC:   FSL_SDHC: 0, FSL_SDHC: 1”</h4><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">File</span>: ~/common/board_r.c</div><div class="line"></div><div class="line"><span class="prolog">static init_fnc_t init_sequence_f[] = &#123;</span></div><div class="line">...</div><div class="line">initr_mmc,</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">File</span>: ~/<span class="keyword">common</span>/board_r.c</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: initr_mmc() -&gt; mmc_initialize()</div><div class="line"></div><div class="line"><span class="keyword">File</span>: ~/board/freescale/ebx_taurus/ebx_taurus.c  </div><div class="line"><span class="function"><span class="keyword">Function</span></span>: board_mmc_init()</div></pre></td></tr></table></figure>
+<h4 id="7-“-Warning-bad-CRC-using-default-environment”"><a href="#7-“-Warning-bad-CRC-using-default-environment”" class="headerlink" title="7. “* Warning - bad CRC, using default environment”"></a>7. “<em>*</em> Warning - bad CRC, using default environment”</h4><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">File</span>: ~/common/board_r.c</div><div class="line"></div><div class="line"><span class="prolog">static init_fnc_t init_sequence_f[] = &#123;</span></div><div class="line">...</div><div class="line">initr_env,</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">File</span>: ~/<span class="keyword">common</span>/board_r.c</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: initr_env() -&gt; set_default_env()</div><div class="line"></div><div class="line"><span class="keyword">File</span>: ~/<span class="keyword">common</span>/env_common.c</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: set_default_env()</div></pre></td></tr></table></figure>
+<h4 id="8-“No-panel-detected-…-“"><a href="#8-“No-panel-detected-…-“" class="headerlink" title="8. “No panel detected: … “"></a>8. “No panel detected: … “</h4><p>No panel detected: default to Hannstar-XGA<br>Display: Hannstar-XGA (1024x768)  </p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">File:</span> <span class="regexp">~/board/</span>freescale<span class="regexp">/ebx_taurus/</span>ebx_taurus.c</div><div class="line"><span class="string">Function:</span> board_video_skip()</div></pre></td></tr></table></figure>
+<h4 id="9-“In-serial-…”"><a href="#9-“In-serial-…”" class="headerlink" title="9. “In:    serial …”"></a>9. “In:    serial …”</h4><p>In:    serial<br>Out:   serial<br>Err:   serial  </p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">File</span>: ~/<span class="keyword">common</span>/console.c</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: stdio_print_current_devices()</div></pre></td></tr></table></figure>
+<h4 id="10-“Found-PFUZE100-deviceid-10-revid-21”"><a href="#10-“Found-PFUZE100-deviceid-10-revid-21”" class="headerlink" title="10. “Found PFUZE100 deviceid=10,revid=21”"></a>10. “Found PFUZE100 deviceid=10,revid=21”</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">File:</span> <span class="regexp">~/board/</span>freescale<span class="regexp">/ebx_taurus/</span>ebx_taurus.c</div><div class="line"><span class="string">Function:</span> setup_pmic_voltages()</div></pre></td></tr></table></figure>
+<h4 id="11-“JEDEC-ID-0xef-0x40-0x17”"><a href="#11-“JEDEC-ID-0xef-0x40-0x17”" class="headerlink" title="11. “JEDEC ID: 0xef:0x40:0x17”"></a>11. “JEDEC ID: 0xef:0x40:0x17”</h4><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">File:</span> ~<span class="meta-keyword">/drivers/</span>mtd<span class="meta-keyword">/spi/</span>imx_spi_nor_m25pxx.c</div><div class="line"><span class="symbol">Function:</span> spi_nor_flash_query()</div></pre></td></tr></table></figure>
+<h4 id="12-“check-and-clean-reg-0-flag-set-0”"><a href="#12-“check-and-clean-reg-0-flag-set-0”" class="headerlink" title="12. “check_and_clean: reg 0, flag_set 0”"></a>12. “check_and_clean: reg 0, flag_set 0”</h4><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">File:</span> ~<span class="meta-keyword">/arch/</span>arm<span class="meta-keyword">/cpu/</span>armv7<span class="meta-keyword">/mx6/</span>soc.c</div><div class="line"><span class="symbol">Function:</span> recovery_check_and_clean_flag()</div></pre></td></tr></table></figure>
+<h4 id="13-“Fastboot-Normal”"><a href="#13-“Fastboot-Normal”" class="headerlink" title="13. “Fastboot: Normal”"></a>13. “Fastboot: Normal”</h4><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">File:</span> ~<span class="meta-keyword">/board/</span>freescale<span class="meta-keyword">/common/</span>recovery.c</div><div class="line"><span class="symbol">Function:</span> check_recovery_mode()</div></pre></td></tr></table></figure>
+<h4 id="14-“flash-target-is-MMC-0”"><a href="#14-“flash-target-is-MMC-0”" class="headerlink" title="14. “flash target is MMC:0”"></a>14. “flash target is MMC:0”</h4><figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">File</span>: ~/drivers/fastboot/fastboot.c</div><div class="line"><span class="function"><span class="keyword">Function</span>:</span> _fastboot_parts_load_from_ptable()</div></pre></td></tr></table></figure>
+<h4 id="15-“Net-FEC-PRIME-”"><a href="#15-“Net-FEC-PRIME-”" class="headerlink" title="15. “Net:   FEC [PRIME]”"></a>15. “Net:   FEC [PRIME]”</h4><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">File</span>: ~/common/board_r.c</div><div class="line"></div><div class="line"><span class="prolog">static init_fnc_t init_sequence_f[] = &#123;</span></div><div class="line">...</div><div class="line">initr_net,</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">File</span>: ~/<span class="keyword">common</span>/board_r.c</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: initr_net() -&gt; eth_initialize()</div></pre></td></tr></table></figure>
+<h4 id="16-“Normal-Boot”"><a href="#16-“Normal-Boot”" class="headerlink" title="16. “Normal Boot”"></a>16. “Normal Boot”</h4><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">File</span>: ~/<span class="keyword">common</span>/main.c</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: process_boot_delay()</div></pre></td></tr></table></figure>
+<h4 id="17-“Hit-any-key-to-stop-autoboot-0”"><a href="#17-“Hit-any-key-to-stop-autoboot-0”" class="headerlink" title="17. “Hit any key to stop autoboot:  0”"></a>17. “Hit any key to stop autoboot:  0”</h4><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">File</span>: ~/<span class="keyword">common</span>/main.c</div><div class="line"><span class="function"><span class="keyword">Function</span></span>: abortboot_normal()</div></pre></td></tr></table></figure>
+<h3 id="II-uboot-init-function-list"><a href="#II-uboot-init-function-list" class="headerlink" title="II. uboot init function list"></a>II. uboot init function list</h3><p>~: uboot-root-folder</p>
+<p>Two important file for uboot init.</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">File</span>: ~/<span class="meta">common</span>/<span class="keyword">board_f.c</span></div><div class="line"> init_fnc_t_init_sequence_f[]</div><div class="line"><span class="symbol"></span></div><div class="line">File: ~/<span class="meta">common</span>/<span class="keyword">board_r.c</span></div><div class="line"> init_fnc_t_init_sequence_r[]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/uboot/" rel="tag">#uboot</a>
+          
+            <a href="/tags/startup/" rel="tag">#startup</a>
+          
+            <a href="/tags/trace/" rel="tag">#trace</a>
+          
+            <a href="/tags/i-mx6/" rel="tag">#i.mx6</a>
+          
+            <a href="/tags/taurus/" rel="tag">#taurus</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/append/icm3011-emmc-flashing/" rel="next" title="eMMC Flashing on ICM-3011">
+                <i class="fa fa-chevron-left"></i> eMMC Flashing on ICM-3011
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/events/2016-0111-icm2011-yocto-1.6.2-rls/" rel="prev" title="Yocto 1.6.2 Announcement for ICM-2011">
+                Yocto 1.6.2 Announcement for ICM-2011 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="embux.tech" />
+          <p class="site-author-name" itemprop="name">embux.tech</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introuction"><span class="nav-number">1.</span> <span class="nav-text">Introuction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boot-Console-Message"><span class="nav-number">2.</span> <span class="nav-text">Boot Console Message</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#I-Message-trace"><span class="nav-number">2.1.</span> <span class="nav-text">I. Message trace</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-“U-Boot-2014-04-00008-g2f63f77-Jul-26-2015-17-08-56-”"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. “U-Boot 2014.04-00008-g2f63f77 (Jul 26 2015 - 17:08:56)”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-“CPU-Freescale-…”"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. “CPU: Freescale …”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Board-ebx-taurus”"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Board: ebx-taurus”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-“I2C-ready”"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. “I2C:   ready”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-“DRAM-1-GiB”"><span class="nav-number">2.1.5.</span> <span class="nav-text">5. “DRAM:  1 GiB”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-“MMC-FSL-SDHC-0-FSL-SDHC-1”"><span class="nav-number">2.1.6.</span> <span class="nav-text">6. “MMC:   FSL_SDHC: 0, FSL_SDHC: 1”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-“-Warning-bad-CRC-using-default-environment”"><span class="nav-number">2.1.7.</span> <span class="nav-text">7. “* Warning - bad CRC, using default environment”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-“No-panel-detected-…-“"><span class="nav-number">2.1.8.</span> <span class="nav-text">8. “No panel detected: … “</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-“In-serial-…”"><span class="nav-number">2.1.9.</span> <span class="nav-text">9. “In:    serial …”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-“Found-PFUZE100-deviceid-10-revid-21”"><span class="nav-number">2.1.10.</span> <span class="nav-text">10. “Found PFUZE100 deviceid=10,revid=21”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-“JEDEC-ID-0xef-0x40-0x17”"><span class="nav-number">2.1.11.</span> <span class="nav-text">11. “JEDEC ID: 0xef:0x40:0x17”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-“check-and-clean-reg-0-flag-set-0”"><span class="nav-number">2.1.12.</span> <span class="nav-text">12. “check_and_clean: reg 0, flag_set 0”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-“Fastboot-Normal”"><span class="nav-number">2.1.13.</span> <span class="nav-text">13. “Fastboot: Normal”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-“flash-target-is-MMC-0”"><span class="nav-number">2.1.14.</span> <span class="nav-text">14. “flash target is MMC:0”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-“Net-FEC-PRIME-”"><span class="nav-number">2.1.15.</span> <span class="nav-text">15. “Net:   FEC [PRIME]”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-“Normal-Boot”"><span class="nav-number">2.1.16.</span> <span class="nav-text">16. “Normal Boot”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-“Hit-any-key-to-stop-autoboot-0”"><span class="nav-number">2.1.17.</span> <span class="nav-text">17. “Hit any key to stop autoboot:  0”</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#II-uboot-init-function-list"><span class="nav-number">2.2.</span> <span class="nav-text">II. uboot init function list</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">embux.tech</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'embuxgithubio';
+      var disqus_identifier = 'uboot/uboot-2014-startup-message/';
+      var disqus_title = "Uboot 2014 Startup Message";
+      var disqus_url = 'http://embux.github.io/uboot/uboot-2014-startup-message/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

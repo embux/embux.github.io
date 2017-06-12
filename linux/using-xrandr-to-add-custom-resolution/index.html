@@ -1,0 +1,816 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="resolution,xrandr,xorg,X11," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="This article help to add new resolution using xrandr in X11. We start from confirming the supported video mode in the display device. Using xrandr to add custom video mode (screen resolution)Please f">
+<meta name="keywords" content="resolution,xrandr,xorg,X11">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using xrandr to Add Screen Resolution">
+<meta property="og:url" content="http://embux.github.io/linux/using-xrandr-to-add-custom-resolution/index.html">
+<meta property="og:site_name" content="EMBUX">
+<meta property="og:description" content="This article help to add new resolution using xrandr in X11. We start from confirming the supported video mode in the display device. Using xrandr to add custom video mode (screen resolution)Please f">
+<meta property="og:updated_time" content="2017-05-18T07:22:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Using xrandr to Add Screen Resolution">
+<meta name="twitter:description" content="This article help to add new resolution using xrandr in X11. We start from confirming the supported video mode in the display device. Using xrandr to add custom video mode (screen resolution)Please f">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://embux.github.io/linux/using-xrandr-to-add-custom-resolution/"/>
+
+  <title> Using xrandr to Add Screen Resolution | EMBUX </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">EMBUX</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">embedded linux</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-products">
+          <a href="/product/embux-products/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
+            
+            Products
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-events">
+          <a href="/categories/events/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
+            
+            Events
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Using xrandr to Add Screen Resolution
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-03-29T16:28:30+08:00" content="2016-03-29">
+              2016-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/faq/" itemprop="url" rel="index">
+                    <span itemprop="name">FAQ</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/linux/using-xrandr-to-add-custom-resolution/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="linux/using-xrandr-to-add-custom-resolution/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- article brief , must add more than 130 characters -->
+<p>This article help to add new resolution using xrandr in X11. We start from confirming the supported video mode in the display device.</p>
+<h1 id="Using-xrandr-to-add-custom-video-mode-screen-resolution"><a href="#Using-xrandr-to-add-custom-video-mode-screen-resolution" class="headerlink" title="Using xrandr to add custom video mode (screen resolution)"></a>Using xrandr to add custom video mode (screen resolution)</h1><p>Please follow below steps to add the custom video mode</p>
+<h3 id="1-Check-current-display-name-and-available-video-mode"><a href="#1-Check-current-display-name-and-available-video-mode" class="headerlink" title="1. Check current display name and available video mode"></a>1. Check current display name and available video mode</h3><p>Enter below command in terminal ..</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ xrandr | grep maximum  </div><div class="line">Screen <span class="number">0</span>: minimum <span class="number">240</span> <span class="keyword">x</span> <span class="number">240</span>, current <span class="number">1280</span> <span class="keyword">x</span> <span class="number">720</span>, maximum <span class="number">8192</span> <span class="keyword">x</span> <span class="number">8192</span></div><div class="line">DISP<span class="number">3</span> BG connected <span class="number">1280</span><span class="keyword">x</span><span class="number">720</span>+<span class="number">0</span>+<span class="number">0</span> (normal left inverted right <span class="keyword">x</span> axis y axis) <span class="number">0</span>mm <span class="keyword">x</span> <span class="number">0</span>mm   </div><div class="line">S:<span class="number">1920</span><span class="keyword">x</span><span class="number">1080</span>p<span class="number">-60</span>   <span class="number">60.0</span>+</div><div class="line">S:<span class="number">1920</span><span class="keyword">x</span><span class="number">1080</span>p<span class="number">-50</span>   <span class="number">50.0</span></div><div class="line">S:<span class="number">1280</span><span class="keyword">x</span><span class="number">720</span>p<span class="number">-50</span>    <span class="number">50.0</span>*</div><div class="line">S:<span class="number">1280</span><span class="keyword">x</span><span class="number">720</span>p<span class="number">-60</span>    <span class="number">60.0</span></div></pre></td></tr></table></figure>
+<p>from above, we get:</p>
+<ul>
+<li>display output name: “DISP3 BG”  </li>
+<li>current video mode: “S:1280x720p-50”  </li>
+<li>maximum resolution: 8192 x 8192<br>And it is also easy to see that current resolution is 1280 x 720</li>
+</ul>
+<p>The result might vary depends on your display device (We are using AOC I2470Sw - 24” HDMI monitor).</p>
+<h3 id="2-Create-custom-video-mode"><a href="#2-Create-custom-video-mode" class="headerlink" title="2. Create custom video mode"></a>2. Create custom video mode</h3><p>Use gtf to create the video mode line  </p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ gtf <span class="number">800 480</span> <span class="number">60</span>.<span class="number">0</span></div><div class="line"></div><div class="line"># <span class="number">800x480</span> @ <span class="number">60</span>.<span class="number">00</span> Hz (GTF) hsync: <span class="number">29</span>.<span class="number">82</span> kHz<span class="comment">; pclk: 29.58</span></div><div class="line">Modeline "<span class="number">800</span>x<span class="number">480_60.00</span>" <span class="number">29.58 800</span> <span class="number">816 896</span> <span class="number">992 480</span> <span class="number">481 484</span> <span class="number">497</span> -HSync +Vsync</div></pre></td></tr></table></figure>
+<p>Add new mode using xrandr</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ xrandr --newmode <span class="string">"800x480_60.00"</span> <span class="number">29.58</span> <span class="number">800</span> <span class="number">816</span> <span class="number">896</span> <span class="number">992</span> <span class="number">480</span> <span class="number">481</span> <span class="number">484</span> <span class="number">497</span> -HSync +Vsync</div></pre></td></tr></table></figure>
+<p>Add this custom video mode to the output (display output name in step 1) and test</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ xrandr --addmode <span class="string">"DISP3 BG"</span> <span class="number">800</span>x480_60<span class="number">.00</span></div><div class="line">$ xrandr --output <span class="string">"DISP3 BG"</span> --mode <span class="number">800</span>x480_60<span class="number">.00</span></div></pre></td></tr></table></figure>
+<h3 id="3-Keep-the-configuration"><a href="#3-Keep-the-configuration" class="headerlink" title="3. Keep the configuration"></a>3. Keep the configuration</h3><p>Too keep the configuration, we could add teh “Modeline” into xorg.conf</p>
+<p><code>sudo nano /etc/X11/xorg.conf</code></p>
+<p>You could change nano to your familiar editor (ex: vi, vim or GUI-editor gedit, geany)</p>
+<p>Try to find <code>Section &quot;Monitor&quot;</code> and insert below line into Monitor Section.
+<code>Modeline &quot;800x480_60.00&quot; 29.58 800 816 896 992 480 481 484 497 -HSync +Vsync</code></p>
+<p>for example:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Section <span class="string">"Monitor"</span></div><div class="line">Identifier <span class="string">"HDMI Monitor"</span></div><div class="line">...</div><div class="line">Modeline <span class="string">"800x480_60.00"</span> <span class="number">29.58</span> <span class="number">800</span> <span class="number">816</span> <span class="number">896</span> <span class="number">992</span> <span class="number">480</span> <span class="number">481</span> <span class="number">484</span> <span class="number">497</span> -HSync +Vsync</div><div class="line">...</div><div class="line">EndSection</div></pre></td></tr></table></figure>
+<p>Reboot or restart X-server to take effect.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/Documentation/fb/modedb.txt?id=v3.8.13" target="_blank" rel="external">modedb default video mode support - linux kernel documentation</a></li>
+<li><a href="https://wiki.ubuntu.com/X/Config/Resolution" target="_blank" rel="external">resolution - ubuntu wiki</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/resolution/" rel="tag">#resolution</a>
+          
+            <a href="/tags/xrandr/" rel="tag">#xrandr</a>
+          
+            <a href="/tags/xorg/" rel="tag">#xorg</a>
+          
+            <a href="/tags/x11/" rel="tag">#X11</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/events/2016-0316-icm3011-android-5.0.2-demo/" rel="next" title="Android 5.0.2 running on ICM-3011">
+                <i class="fa fa-chevron-left"></i> Android 5.0.2 running on ICM-3011
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/wec7/wec7-change-display-config/" rel="prev" title="How to setup different display configuration of ICM-3011 with WEC7 OS">
+                How to setup different display configuration of ICM-3011 with WEC7 OS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="embux.tech" />
+          <p class="site-author-name" itemprop="name">embux.tech</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Using-xrandr-to-add-custom-video-mode-screen-resolution"><span class="nav-number">1.</span> <span class="nav-text">Using xrandr to add custom video mode (screen resolution)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Check-current-display-name-and-available-video-mode"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. Check current display name and available video mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Create-custom-video-mode"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. Create custom video mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Keep-the-configuration"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. Keep the configuration</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">1.1.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">embux.tech</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'embuxgithubio';
+      var disqus_identifier = 'linux/using-xrandr-to-add-custom-resolution/';
+      var disqus_title = "Using xrandr to Add Screen Resolution";
+      var disqus_url = 'http://embux.github.io/linux/using-xrandr-to-add-custom-resolution/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

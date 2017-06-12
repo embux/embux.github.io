@@ -1,0 +1,781 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="android,adb,debug," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Launch command line of windows1.1 Use Windows key + R to launch run window1.2 Keyin cmd and select OK Check device connection2.1 Keyin adb devices 2.2 Zjg6MDI6Nzg6ODE6MDA6MWI is device id for example2">
+<meta name="keywords" content="android,adb,debug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Use Android Debug Bridge(ADB) in Windows">
+<meta property="og:url" content="http://embux.github.io/android/android-adb-command/index.html">
+<meta property="og:site_name" content="EMBUX">
+<meta property="og:description" content="Launch command line of windows1.1 Use Windows key + R to launch run window1.2 Keyin cmd and select OK Check device connection2.1 Keyin adb devices 2.2 Zjg6MDI6Nzg6ODE6MDA6MWI is device id for example2">
+<meta property="og:image" content="http://embux.github.io/img/adb_devices.jpg">
+<meta property="og:image" content="http://embux.github.io/img/adb_devices_err.jpg">
+<meta property="og:updated_time" content="2017-05-18T07:22:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Use Android Debug Bridge(ADB) in Windows">
+<meta name="twitter:description" content="Launch command line of windows1.1 Use Windows key + R to launch run window1.2 Keyin cmd and select OK Check device connection2.1 Keyin adb devices 2.2 Zjg6MDI6Nzg6ODE6MDA6MWI is device id for example2">
+<meta name="twitter:image" content="http://embux.github.io/img/adb_devices.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://embux.github.io/android/android-adb-command/"/>
+
+  <title> Use Android Debug Bridge(ADB) in Windows | EMBUX </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">EMBUX</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">embedded linux</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-products">
+          <a href="/product/embux-products/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
+            
+            Products
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-events">
+          <a href="/categories/events/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
+            
+            Events
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Use Android Debug Bridge(ADB) in Windows
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-03-14T13:42:10+08:00" content="2016-03-14">
+              2016-03-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/android/android-adb-command/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="android/android-adb-command/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Launch-command-line-of-windows"><a href="#Launch-command-line-of-windows" class="headerlink" title="Launch command line of windows"></a>Launch command line of windows</h3><p>1.1 Use <strong>Windows key + R</strong> to launch run window<br>1.2 Keyin <strong>cmd</strong> and select <strong>OK</strong></p>
+<h3 id="Check-device-connection"><a href="#Check-device-connection" class="headerlink" title="Check device connection"></a>Check device connection</h3><p>2.1 Keyin <strong>adb devices</strong> <img src="../../img/adb_devices.jpg" alt=""><br>2.2 <strong>Zjg6MDI6Nzg6ODE6MDA6MWI</strong> is device id for example<br>2.3 If there is not any devices, please check USB cable or driver in device manager <img src="../../img/adb_devices_err.jpg" alt=""></p>
+<h3 id="ADB-help"><a href="#ADB-help" class="headerlink" title="ADB help"></a>ADB help</h3><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div></pre></td><td class="code"><pre><div class="line">C:\&gt;adb</div><div class="line">Android Debug Bridge version <span class="number">1.0</span>.<span class="number">32</span></div><div class="line"></div><div class="line"> -a                            - directs adb <span class="keyword">to</span> listen <span class="keyword">on</span> <span class="keyword">all</span> interfaces <span class="keyword">for</span> a connection</div><div class="line"> -d                            - directs command <span class="keyword">to</span> the only connected USB device</div><div class="line">                                 returns an <span class="literal">error</span> <span class="keyword">if</span> more than one USB device <span class="keyword">is</span> present.</div><div class="line"> -e                            - directs command <span class="keyword">to</span> the only running emulator.</div><div class="line">                                 returns an <span class="literal">error</span> <span class="keyword">if</span> more than one emulator <span class="keyword">is</span> running.</div><div class="line"> -s &lt;specific device&gt;          - directs command <span class="keyword">to</span> the device <span class="keyword">or</span> emulator <span class="keyword">with</span> the given</div><div class="line">                                 serial number <span class="keyword">or</span> qualifier. Overrides ANDROID_SERIAL</div><div class="line">                                 environment <span class="keyword">variable</span>.</div><div class="line"> -p &lt;product name <span class="keyword">or</span> path&gt;     - simple product name like <span class="symbol">'sooner</span>', <span class="keyword">or</span></div><div class="line">                                 a relative/absolute path <span class="keyword">to</span> a product</div><div class="line">                                 <span class="keyword">out</span> directory like <span class="symbol">'out</span>/target/product/sooner'.</div><div class="line">                                 <span class="keyword">If</span> -p <span class="keyword">is</span> <span class="keyword">not</span> specified, the ANDROID_PRODUCT_OUT</div><div class="line">                                 environment <span class="keyword">variable</span> <span class="keyword">is</span> used, which must</div><div class="line">                                 be an absolute path.</div><div class="line"> -H                            - Name <span class="keyword">of</span> adb server host (<span class="keyword">default</span>: localhost)</div><div class="line"> -P                            - <span class="keyword">Port</span> <span class="keyword">of</span> adb server (<span class="keyword">default</span>: <span class="number">5037</span>)</div><div class="line"> devices [-l]                  - list <span class="keyword">all</span> connected devices</div><div class="line">                                 ('-l' will also list device qualifiers)</div><div class="line"> connect &lt;host&gt;[:&lt;<span class="keyword">port</span>&gt;]       - connect <span class="keyword">to</span> a device via TCP/IP</div><div class="line">                                 <span class="keyword">Port</span> <span class="number">5555</span> <span class="keyword">is</span> used by <span class="keyword">default</span> <span class="keyword">if</span> no <span class="keyword">port</span> number <span class="keyword">is</span> specified.</div><div class="line"> <span class="keyword">disconnect</span> [&lt;host&gt;[:&lt;<span class="keyword">port</span>&gt;]]  - <span class="keyword">disconnect</span> from a TCP/IP device.</div><div class="line">                                 <span class="keyword">Port</span> <span class="number">5555</span> <span class="keyword">is</span> used by <span class="keyword">default</span> <span class="keyword">if</span> no <span class="keyword">port</span> number <span class="keyword">is</span> specified.</div><div class="line">                                 Using this command <span class="keyword">with</span> no additional arguments</div><div class="line">                                 will <span class="keyword">disconnect</span> from <span class="keyword">all</span> connected TCP/IP devices.</div><div class="line"></div><div class="line">device commands:</div><div class="line">  adb push [-p] &lt;local&gt; &lt;remote&gt;</div><div class="line">                               - copy <span class="keyword">file</span>/dir <span class="keyword">to</span> device</div><div class="line">                                 ('-p' <span class="keyword">to</span> display the transfer progress)</div><div class="line">  adb pull [-p] [-a] &lt;remote&gt; [&lt;local&gt;]</div><div class="line">                               - copy <span class="keyword">file</span>/dir from device</div><div class="line">                                 ('-p' <span class="keyword">to</span> display the transfer progress)</div><div class="line">                                 ('-a' means copy timestamp <span class="keyword">and</span> mode)</div><div class="line">  adb sync [ &lt;directory&gt; ]     - copy host-&gt;device only <span class="keyword">if</span> changed</div><div class="line">                                 (-l means list but don<span class="symbol">'t</span> copy)</div><div class="line">                                 (see <span class="symbol">'adb</span> help <span class="keyword">all</span>')</div><div class="line">  adb shell                    - run remote shell interactively</div><div class="line">  adb shell &lt;command&gt;          - run remote shell command</div><div class="line">  adb emu &lt;command&gt;            - run emulator console command</div><div class="line">  adb logcat [ &lt;filter-spec&gt; ] - View device log</div><div class="line">  adb forward <span class="comment">--list           - list all forward socket connections.</span></div><div class="line">                                 the format <span class="keyword">is</span> a list <span class="keyword">of</span> lines <span class="keyword">with</span> the following format:</div><div class="line">                                    &lt;serial&gt; <span class="string">" "</span> &lt;local&gt; <span class="string">" "</span> &lt;remote&gt; <span class="string">"\n"</span></div><div class="line">  adb forward &lt;local&gt; &lt;remote&gt; - forward socket connections</div><div class="line">                                 forward specs are one <span class="keyword">of</span>:</div><div class="line">                                   tcp:&lt;<span class="keyword">port</span>&gt;</div><div class="line">                                   localabstract:&lt;unix domain socket name&gt;</div><div class="line">                                   localreserved:&lt;unix domain socket name&gt;</div><div class="line">                                   localfilesystem:&lt;unix domain socket name&gt;</div><div class="line">                                   dev:&lt;<span class="built_in">character</span> device name&gt;</div><div class="line">                                   jdwp:&lt;<span class="keyword">process</span> pid&gt; (remote only)</div><div class="line">  adb forward <span class="comment">--no-rebind &lt;local&gt; &lt;remote&gt;</span></div><div class="line">                               - same as <span class="symbol">'adb</span> forward &lt;local&gt; &lt;remote&gt;' but fails</div><div class="line">                                 <span class="keyword">if</span> &lt;local&gt; <span class="keyword">is</span> already forwarded</div><div class="line">  adb forward <span class="comment">--remove &lt;local&gt; - remove a specific forward socket connection</span></div><div class="line">  adb forward <span class="comment">--remove-all     - remove all forward socket connections</span></div><div class="line">  adb reverse <span class="comment">--list           - list all reverse socket connections from device</span></div><div class="line">  adb reverse &lt;remote&gt; &lt;local&gt; - reverse socket connections</div><div class="line">                                 reverse specs are one <span class="keyword">of</span>:</div><div class="line">                                   tcp:&lt;<span class="keyword">port</span>&gt;</div><div class="line">                                   localabstract:&lt;unix domain socket name&gt;</div><div class="line">                                   localreserved:&lt;unix domain socket name&gt;</div><div class="line">                                   localfilesystem:&lt;unix domain socket name&gt;</div><div class="line">  adb reverse <span class="comment">--norebind &lt;remote&gt; &lt;local&gt;</span></div><div class="line">                               - same as <span class="symbol">'adb</span> reverse &lt;remote&gt; &lt;local&gt;' but fails</div><div class="line">                                 <span class="keyword">if</span> &lt;remote&gt; <span class="keyword">is</span> already reversed.</div><div class="line">  adb reverse <span class="comment">--remove &lt;remote&gt;</span></div><div class="line">                               - remove a specific reversed socket connection</div><div class="line">  adb reverse <span class="comment">--remove-all     - remove all reversed socket connections from device</span></div><div class="line">  adb jdwp                     - list PIDs <span class="keyword">of</span> processes hosting a JDWP <span class="keyword">transport</span></div><div class="line">  adb install [-lrtsd] &lt;<span class="keyword">file</span>&gt;</div><div class="line">  adb install-multiple [-lrtsdp] &lt;<span class="keyword">file</span>...&gt;</div><div class="line">                               - push this <span class="keyword">package</span> <span class="keyword">file</span> <span class="keyword">to</span> the device <span class="keyword">and</span> install it</div><div class="line">                                 (-l: forward lock application)</div><div class="line">                                 (-r: replace existing application)</div><div class="line">                                 (-t: allow test packages)</div><div class="line">                                 (-s: install application <span class="keyword">on</span> sdcard)</div><div class="line">                                 (-d: allow version code downgrade)</div><div class="line">                                 (-p: partial application install)</div><div class="line">  adb uninstall [-k] &lt;<span class="keyword">package</span>&gt; - remove this app <span class="keyword">package</span> from the device</div><div class="line">                                 ('-k' means keep the data <span class="keyword">and</span> cache directories)</div><div class="line">  adb bugreport                - <span class="keyword">return</span> <span class="keyword">all</span> information from the device</div><div class="line">                                 that should be included <span class="keyword">in</span> a bug <span class="keyword">report</span>.</div><div class="line"></div><div class="line">  adb backup [-f &lt;<span class="keyword">file</span>&gt;] [-apk|-noapk] [-obb|-noobb] [-<span class="keyword">shared</span>|-noshared] [-<span class="keyword">all</span>] [-system|-nosystem] [&lt;packages...&gt;]</div><div class="line">                               - write an archive <span class="keyword">of</span> the device<span class="symbol">'s</span> data <span class="keyword">to</span> &lt;<span class="keyword">file</span>&gt;.</div><div class="line">                                 <span class="keyword">If</span> no -f option <span class="keyword">is</span> supplied <span class="keyword">then</span> the data <span class="keyword">is</span> written</div><div class="line">                                 <span class="keyword">to</span> <span class="string">"backup.ab"</span> <span class="keyword">in</span> the current directory.</div><div class="line">                                 (-apk|-noapk enable/disable backup <span class="keyword">of</span> the .apks themselves</div><div class="line">                                    <span class="keyword">in</span> the archive; the <span class="keyword">default</span> <span class="keyword">is</span> noapk.)</div><div class="line">                                 (-obb|-noobb enable/disable backup <span class="keyword">of</span> any installed apk expansion</div><div class="line">                                    (aka .obb) files associated <span class="keyword">with</span> each application; the <span class="keyword">default</span></div><div class="line">                                    <span class="keyword">is</span> noobb.)</div><div class="line">                                 (-<span class="keyword">shared</span>|-noshared enable/disable backup <span class="keyword">of</span> the device<span class="symbol">'s</span></div><div class="line">                                    <span class="keyword">shared</span> storage / SD card contents; the <span class="keyword">default</span> <span class="keyword">is</span> noshared.)</div><div class="line">                                 (-<span class="keyword">all</span> means <span class="keyword">to</span> back up <span class="keyword">all</span> installed applications)</div><div class="line">                                 (-system|-nosystem toggles whether -<span class="keyword">all</span> automatically includes</div><div class="line">                                    system applications; the <span class="keyword">default</span> <span class="keyword">is</span> <span class="keyword">to</span> include system apps)</div><div class="line">                                 (&lt;packages...&gt; <span class="keyword">is</span> the list <span class="keyword">of</span> applications <span class="keyword">to</span> be backed up.  <span class="keyword">If</span></div><div class="line">                                    the -<span class="keyword">all</span> <span class="keyword">or</span> -<span class="keyword">shared</span> flags are passed, <span class="keyword">then</span> the <span class="keyword">package</span></div><div class="line">                                    list <span class="keyword">is</span> optional.  Applications explicitly given <span class="keyword">on</span> the</div><div class="line">                                    command <span class="literal">line</span> will be included even <span class="keyword">if</span> -nosystem would</div><div class="line">                                    ordinarily cause them <span class="keyword">to</span> be omitted.)</div><div class="line"></div><div class="line">  adb restore &lt;<span class="keyword">file</span>&gt;           - restore device contents from the &lt;<span class="keyword">file</span>&gt; backup archive</div><div class="line"></div><div class="line">  adb help                     - show this help message</div><div class="line">  adb version                  - show version num</div><div class="line"></div><div class="line">scripting:</div><div class="line">  adb <span class="keyword">wait</span>-<span class="keyword">for</span>-device          - <span class="keyword">block</span> <span class="keyword">until</span> device <span class="keyword">is</span> online</div><div class="line">  adb start-server             - ensure that there <span class="keyword">is</span> a server running</div><div class="line">  adb kill-server              - kill the server <span class="keyword">if</span> it <span class="keyword">is</span> running</div><div class="line">  adb get-state                - prints: offline | bootloader | device</div><div class="line">  adb get-serialno             - prints: &lt;serial-number&gt;</div><div class="line">  adb get-devpath              - prints: &lt;device-path&gt;</div><div class="line">  adb status-window            - continuously print device status <span class="keyword">for</span> a specified device</div><div class="line">  adb remount                  - remounts the /system <span class="keyword">and</span> /vendor (<span class="keyword">if</span> present) partitions <span class="keyword">on</span> the device read-write</div><div class="line">  adb reboot [bootloader|recovery] - reboots the device, optionally into the bootloader <span class="keyword">or</span> recovery program</div><div class="line">  adb reboot-bootloader        - reboots the device into the bootloader</div><div class="line">  adb root                     - restarts the adbd daemon <span class="keyword">with</span> root permissions</div><div class="line">  adb usb                      - restarts the adbd daemon listening <span class="keyword">on</span> USB</div><div class="line">  adb tcpip &lt;<span class="keyword">port</span>&gt;             - restarts the adbd daemon listening <span class="keyword">on</span> TCP <span class="keyword">on</span> the specified <span class="keyword">port</span></div><div class="line">networking:</div><div class="line">  adb ppp &lt;tty&gt; [parameters]   - Run PPP over USB.</div><div class="line"> <span class="literal">Note</span>: you should <span class="keyword">not</span> automatically start a PPP connection.</div><div class="line"> &lt;tty&gt; refers <span class="keyword">to</span> the tty <span class="keyword">for</span> PPP stream. Eg. dev:/dev/omap_csmi_tty1</div><div class="line"> [parameters] - Eg. defaultroute debug dump local notty usepeerdns</div><div class="line"></div><div class="line">adb sync notes: adb sync [ &lt;directory&gt; ]</div><div class="line">  &lt;localdir&gt; can be interpreted <span class="keyword">in</span> several ways:</div><div class="line"></div><div class="line">  - <span class="keyword">If</span> &lt;directory&gt; <span class="keyword">is</span> <span class="keyword">not</span> specified, /system, /vendor (<span class="keyword">if</span> present), <span class="keyword">and</span> /data partitions will be updated.</div><div class="line"></div><div class="line">  - <span class="keyword">If</span> it <span class="keyword">is</span> <span class="string">"system"</span>, <span class="string">"vendor"</span> <span class="keyword">or</span> <span class="string">"data"</span>, only the corresponding partition</div><div class="line">    <span class="keyword">is</span> updated.</div><div class="line"></div><div class="line">environmental variables:</div><div class="line">  ADB_TRACE                    - Print debug information. A comma separated list <span class="keyword">of</span> the following values</div><div class="line">                                 <span class="number">1</span> <span class="keyword">or</span> <span class="keyword">all</span>, adb, sockets, packets, rwx, usb, sync, sysdeps, <span class="keyword">transport</span>, jdwp</div><div class="line">  ANDROID_SERIAL               - The serial number <span class="keyword">to</span> connect <span class="keyword">to</span>. -s takes priority over this <span class="keyword">if</span> given.</div><div class="line">  ANDROID_LOG_TAGS             - <span class="keyword">When</span> used <span class="keyword">with</span> the logcat option, only these debug tags are printed.</div><div class="line"></div><div class="line">C:\&gt;</div></pre></td></tr></table></figure>
+<h3 id="APK-install-to-Embux-Android-deices-from-PC"><a href="#APK-install-to-Embux-Android-deices-from-PC" class="headerlink" title="APK install to Embux Android deices from PC"></a>APK install to Embux Android deices from PC</h3><p>4.1 Install directly</p>
+<pre><code>adb install XXXXX.apk
+</code></pre><p>XXXXX is the apk file name.</p>
+<p>4.2 Copy apk to device then install</p>
+<pre><code>adb root
+adb remount
+adb push XXXXX.apk /system/app
+</code></pre><p>then</p>
+<pre><code>adb shell  
+</code></pre><p>go to /system/app install it<br>or install it from device</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag">#android</a>
+          
+            <a href="/tags/adb/" rel="tag">#adb</a>
+          
+            <a href="/tags/debug/" rel="tag">#debug</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/wec7/wec7-sd-flashing/" rel="next" title="WEC7 SD Flashing for ICM-Series">
+                <i class="fa fa-chevron-left"></i> WEC7 SD Flashing for ICM-Series
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/events/2016-0316-icm3011-android-5.0.2-demo/" rel="prev" title="Android 5.0.2 running on ICM-3011">
+                Android 5.0.2 running on ICM-3011 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="embux.tech" />
+          <p class="site-author-name" itemprop="name">embux.tech</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Launch-command-line-of-windows"><span class="nav-number">1.</span> <span class="nav-text">Launch command line of windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Check-device-connection"><span class="nav-number">2.</span> <span class="nav-text">Check device connection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADB-help"><span class="nav-number">3.</span> <span class="nav-text">ADB help</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APK-install-to-Embux-Android-deices-from-PC"><span class="nav-number">4.</span> <span class="nav-text">APK install to Embux Android deices from PC</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">embux.tech</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'embuxgithubio';
+      var disqus_identifier = 'android/android-adb-command/';
+      var disqus_title = "Use Android Debug Bridge(ADB) in Windows";
+      var disqus_url = 'http://embux.github.io/android/android-adb-command/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+</body>
+</html>

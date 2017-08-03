@@ -1646,35 +1646,34 @@ We will start from the debug message since it is easiler to trace from the sourc
 </ol>
 <p><strong>[Environment]</strong></p>
 <ol>
-<li>Laptop/Desktop needs to install Mfg Tool with the latest image released by EMBUX</li>
-<li>Connect laptop/desktop and ICM-3011 with micro USB cable</li>
+<li><p>Laptop/Desktop needs to install Mfg Tool with the latest image released by EMBUX
+<a href="http://embux.github.io/product/embux-products/">(download ..)</a>. <br>  After completing download, unzip the compressed file. You could use <a href="https://7-zip.en.softonic.com/" target="_blank" rel="external">7-zip</a> incase you do not have any decompress appplication. <br>  Go to the unzip folder and find the file “ucl2.xml, ucl2-emmc.xml, ucl2-sd.xml” under “Profiles/mx6dl/OS Firmware/“. For the emmc download, please use ucl2-emmc.xml to replace
+the file “ucl2.xml”. (ex: delete the ucl2.xml, get a copy of ucl2-emmc.xml and rename to ucl2.xml)</p>
+</li>
+<li><p>Connect laptop/desktop and ICM-3011 with micro USB cable</p>
+</li>
 </ol>
 <p><img src="../../img/3011-flash-connection.png" alt=""></p>
 <p><strong>[Procedure]</strong></p>
 <ol>
-<li>Make sure the DIP switches set as the upgrade mode as below:</li>
-</ol>
-<p><img src="../../img/3011-emmc-flash.png" alt=""></p>
-<ol>
+<li><p>Make sure the DIP switches set as the upgrade mode as below:<br>
+<img src="../../img/3011-emmc-flash.png" alt=""></p>
+</li>
 <li><p>Power on the ICM-3011</p>
 </li>
-<li><p>Run the application named <strong>MfgTool2</strong> and the following window will pop up:</p>
+<li><p>Run the application named <strong>MfgTool2</strong> and the following window will pop up:<br>
+<img src="../../img/mfg1.png" alt=""></p>
 </li>
-</ol>
-<p><img src="../../img/mfg1.png" alt=""></p>
-<ol>
-<li>Wait till MFG Tool detects the device, press “Start” to start upgrading</li>
-</ol>
-<p><img src="../../img/mfg2.png" alt=""></p>
-<ol>
-<li>After the upgrading is done, press Stop and then exit the application</li>
-</ol>
-<p><img src="../../img/mfg3.png" alt=""></p>
-<ol>
+<li><p>Wait till MFG Tool detects the device, press “Start” to start upgrading<br>
+<img src="../../img/mfg2.png" alt=""></p>
+</li>
+<li><p>After the upgrading is done, press Stop and then exit the application<br>
+<img src="../../img/mfg3.png" alt=""></p>
+</li>
 <li><p>Disconnect the micro USB cable and then power off the ICM-3011</p>
 </li>
-<li><p>Change the DIP switches setting as below:</p>
-<p><img src="../../img/dipsw_emmc.png" alt=""></p>
+<li><p>Change the DIP switches setting as below:<br>
+<img src="../../img/dipsw_emmc.png" alt=""></p>
 </li>
 <li><p>Power on the ICM-3011 and it will be able to enter the OS with correct image</p>
 </li>
